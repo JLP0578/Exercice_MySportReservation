@@ -53,3 +53,6 @@ il doit empêcher les attaques :
 - **views/** : le dossier contenant les fichiers HTML qui affichent les données au client
 - **controllers/** : le dossier contenant les fichiers PHP qui traitent les demandes des utilisateurs et interagissent avec les modèles et les vues
 
+## Base de données
+
+![BDD](https://github.com/JLP0578/Exercice_MySportReservation/blob/main/exemple%20BDD/Conceptialisation_BDD.png?raw=true)
