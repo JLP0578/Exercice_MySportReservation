@@ -1,22 +1,21 @@
 <?php
 $config = array(
-    'administrateur' => array(
+    'admin' => array(
         'host' => 'localhost',
-        'dbname' => 'MySportReservation',
-        'username' => 'administrateur',
+        'dbname' => 'mysportreservation',
+        'username' => 'admin',
         'password' => 'mot_de_passe'
     ),
     'utilisateur' => array(
         'host' => 'localhost',
-        'dbname' => 'MySportReservation',
+        'dbname' => 'mysportreservation',
         'username' => 'utilisateur',
         'password' => 'mot_de_passe'
     ),
     'lecteur' => array(
         'host' => 'localhost',
-        'dbname' => 'MySportReservation',
+        'dbname' => 'mysportreservation',
         'username' => 'lecteur',
         'password' => 'mot_de_passe'
     )
 );
-?>

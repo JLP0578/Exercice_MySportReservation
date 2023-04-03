@@ -4,10 +4,10 @@ class Connexion {
 
     private function __construct() {}
 
-    public static function getInstance($user)
-    {
+    public static function getInstance($user) {
         if (!isset(self::$instances[$user])) {
-            require_once "../../config.php";
+            require_once __DIR__.'/../../config.php';
+            echo $config[$user]['username'];
             $config = $config[$user];
             $p_host = $config['host'];
             $p_dbname = $config['dbname'];
@@ -16,8 +16,8 @@ class Connexion {
             $p_dsn = "mysql:host=$p_host;dbname=$p_dbname;charset=utf8mb4";
 
             try {
-                self::$instance = new PDO($p_dsn, $p_user, $p_password);
-                self::$instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                self::$instances[$user] = new PDO($p_dsn, $p_user, $p_password);
+                self::$instances[$user]->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             } catch (PDOException $e) {
                 echo 'Erreur de connexion : ' . $e->getMessage();
                 die();
@@ -25,5 +25,11 @@ class Connexion {
         }
 
         return self::$instances[$user];
+    }
+
+    public static function close($user) {
+        if (isset(self::$instances[$user])) {
+            self::$instances[$user] = null;
+        }
     }
 }

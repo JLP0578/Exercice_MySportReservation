@@ -34,6 +34,18 @@ class Membres {
         return $stmt->fetch();
     }
 
+    public function authentification($email, $password) {
+        $stmt = $this->p_connexion->prepare("SELECT * FROM `membres` WHERE `email` = ?");
+        $stmt->execute([$email]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($user && password_verify($password, $user['password'])) {
+            return $user;
+        } else {
+            return false;
+        }
+    }
+
     public function selectByEmail($email) {
         $stmt = $this->p_connexion->prepare("SELECT * FROM `` WHERE `email` = ?");
         $stmt->execute([$email]);
