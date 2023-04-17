@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__.'/../models/classes_BDD/Connexion.php';
-require_once __DIR__.'/../models/classes/Membres.php';
+require_once __DIR__.'/../models/classes/Users.php';
 
 session_start();
 
@@ -13,12 +13,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && (!isset($_POST['csrf_token']) || !h
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_POST['password'])) {
     $email = htmlspecialchars($_POST['email']);
-    $password = htmlspecialchars($_POST['password']);
+    $password = htmlspecialchars($_POST['password']); 
 
-    $connexion = Connexion::getInstance('utilisateur');
-    $membres = new Membres($connexion);
+    $users = new Users(Connexion::getInstance('lecteur'));
+    Connexion::close('lecteur');
 
-    if ($membres->authentification($email, $password)) {
+    if ($users->authentification($email, $password)) {
         $_SESSION['connected'] = true;
         $_SESSION['email'] = $email;
         header('Location: index.php');

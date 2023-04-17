@@ -28,6 +28,16 @@ class Account_activities {
 
         return $stmt->fetchAll();
     }
+
+    public function selectAllByAccountType($type_id) {
+        $stmt = $this->p_connexion->prepare("SELECT * FROM `account_activities` 
+        INNER JOIN `activities` ON `activities`.`activity_id` = `account_activities`.`activity_id` 
+        INNER JOIN `account_types` ON `account_types`.`type_id` = `account_activities`.`type_id`
+        WHERE `account_types`.`type_id` = ?");
+        $stmt->execute([$type_id]);
+
+        return $stmt->fetchAll();
+    }
     
     public function closeConnexion() {
         $this->p_connexion = null;

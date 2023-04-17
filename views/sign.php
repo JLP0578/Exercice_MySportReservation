@@ -29,20 +29,35 @@ if(isset($_GET["erreur"])){
 }
 ?>
 
-<form action="process_signup.php" method="POST">
-    <label for="nom">Nom :</label>
-    <input required type="text" id="nom" name="nom" />
-
-    <label for="prenom">Prénom :</label>
-    <input required type="text" id="prenom" name="prenom" />
-    
-    <label for="email">Adresse e-mail :</label>
-    <input required type="email" id="email" name="email" />
-
-    <label for="password">Mot de passe :</label>
-    <input required type="password" id="password" name="password" />
-    
-    <input required type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
-
-    <button type="submit">S'inscrire</button>
-</form>
+<div class="d-flex flex-row flex-wrap justify-content-center m-2">
+    <form method="POST" action="process_signup.php" class="d-flex flex-column flex-wrap justify-content-between">
+        <div class="input-group input-group-sm mb-2">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="addon-wrapping"><i class="bi bi-person-vcard"></i></span>
+            </div>
+            <input required type="text" class="form-control" id="username" name="username" placeholder="Username">
+        </div>
+        <div class="input-group input-group-sm mb-2">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="addon-wrapping">@</span>
+            </div>
+            <input required type="text" class="form-control" id="email" name="email" placeholder="you@exemple.com">
+        </div>
+        <div class="input-group input-group-sm mb-2">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="addon-wrapping"><i class="bi bi-key"></i></span>
+            </div>
+            <input required type="password" class="form-control" id="password" name="password" placeholder="Password">
+        </div>
+        <div class="input-group input-group-sm mb-2">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="addon-wrapping"><i class="bi bi-key"></i></span>
+            </div>
+            <input required type="password" class="form-control" id="re_password" name="re_password" placeholder="Confirm password">
+        </div>
+        <div class="input-group input-group-sm mb-2">
+            <input required type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
+            <button type="submit" class="form-control btn btn-primary">S'inscrire</button>
+        </div>
+    </form>
+</div>

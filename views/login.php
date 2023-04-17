@@ -10,7 +10,7 @@ if (!isset($_SESSION['csrf_token'])) {
 
 if(isset($_GET["erreur"])){
     if($_GET["erreur"] == "CSRF"){
-        ?> 
+        ?>
         <div class="alert alert-danger" role="alert">
             <h4 class="alert-heading">Bien tenté!</h4>
             <p>Je suis désolé de vous apprendre que vous ne pouvez pas utilisé le CSRF d'un autre utilisateur.</p>
@@ -28,16 +28,23 @@ if(isset($_GET["erreur"])){
 }
 ?>
 
-<form action="process_login.php" method="POST">
-    <label for="email">Adresse e-mail :</label>
-    <input required type="text" id="email" name="email" />
-    
-    <label for="password">Mot de passe:</label>
-    <input required type="password" id="password" name="password" />
-
-    <input required type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>" />
-    <button type="submit">Se connecter</button>
-</form>
-
-
-
+<div class="d-flex flex-row flex-wrap justify-content-center m-2">
+    <form method="POST" action="process_login.php" class="d-flex flex-column flex-wrap justify-content-between">
+        <div class="input-group input-group-sm mb-2">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="addon-wrapping">@</span>
+            </div>
+            <input required type="text" class="form-control" id="email" name="email" placeholder="you@exemple.com">
+        </div>
+        <div class="input-group input-group-sm mb-2">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="addon-wrapping"><i class="bi bi-key"></i></span>
+            </div>
+            <input required type="password" class="form-control" id="password" name="password" placeholder="Password">
+        </div>
+        <div class="input-group input-group-sm mb-2">
+            <input required type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>" />
+            <button type="submit" class="form-control btn btn-primary">Se connecter</button>
+        </div>
+    </form>
+</div>
