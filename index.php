@@ -1,13 +1,15 @@
 <?php
-require_once __DIR__.'/models/classes_BDD/Connexion.php';
-require_once __DIR__.'/models/classes_BDD/Users.php';
-require_once __DIR__.'/models/classes_BDD/Activities.php';
-require_once __DIR__.'/models/classes_BDD/Classes.php';
-require_once __DIR__.'/models/classes_BDD/Account_types.php';
-require_once __DIR__.'/models/classes_BDD/Account_activities.php';
-require_once __DIR__.'/models/classes_BDD/User_account_types.php';
-require_once __DIR__.'/models/classes_BDD/Reservations.php';
-require_once __DIR__.'/outils.php';
+session_start();
+define('PROJECT_PATH', dirname($_SERVER['SCRIPT_FILENAME']));
+require_once PROJECT_PATH.'/models/classes_BDD/Connexion.php';
+require_once PROJECT_PATH.'/models/classes_BDD/Users.php';
+require_once PROJECT_PATH.'/models/classes_BDD/Activities.php';
+require_once PROJECT_PATH.'/models/classes_BDD/Classes.php';
+require_once PROJECT_PATH.'/models/classes_BDD/Account_types.php';
+require_once PROJECT_PATH.'/models/classes_BDD/Account_activities.php';
+require_once PROJECT_PATH.'/models/classes_BDD/User_account_types.php';
+require_once PROJECT_PATH.'/models/classes_BDD/Reservations.php';
+require_once PROJECT_PATH.'/outils.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,9 +26,8 @@ require_once __DIR__.'/outils.php';
 </head>
 <body>
     <?php
-        // include './views/login-signin.php';
-        $AccountTypeId = 3;
-        require_once __DIR__.'/views/lists/list_activities.php';
+        include './views/pages/login-signin.php';
+        // require_once PROJECT_PATH.'/views/components/lists/list_activities.php';
 
     // // SELECT ALL CLASSES
     // $connexion = Connexion::getInstance('lecteur');
@@ -74,6 +75,6 @@ require_once __DIR__.'/outils.php';
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
     <script src="./assets/scripts/outils.js"></script>
-    <script src="./assets/scripts/login-signin.js"></script>
+    <!-- <script src="./assets/scripts/login-signin.js"></script> -->
 </body>
 </html>

@@ -19,3 +19,10 @@ $config = array(
         'password' => 'mot_de_passe'
     )
 );
+
+
+// PASSWORD
+// Password123*
+// Password456*
+// Password789*
+// Password4dmin*

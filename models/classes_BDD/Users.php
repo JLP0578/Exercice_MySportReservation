@@ -35,7 +35,10 @@ class Users {
     }
 
     public function authentification($email, $password) {
-        $stmt = $this->p_connexion->prepare("SELECT * FROM `users` WHERE `email` = ?");
+        $stmt = $this->p_connexion->prepare("SELECT * FROM `user_account_types` 
+        INNER JOIN `users` ON `users`.`user_id` = `user_account_types`.`user_id` 
+        INNER JOIN `account_types` ON `account_types`.`type_id` = `user_account_types`.`type_id` 
+        WHERE `email` = ?");
         $stmt->execute([$email]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 

@@ -1,4 +1,5 @@
 <?php
+echo d($_SERVER);
 require_once __DIR__.'/../models/classes_BDD/Connexion.php';
 require_once __DIR__.'/../models/classes/Users.php';
 

@@ -14,11 +14,6 @@ _tn = (tn)=> document.getElementsByTagName(tn);
 _n  = (n) => document.getElementsByName(n);
 
 /**
- * createElement
- */
-_ce  = (el) => document.createElement(el);
-
-/**
  * getElementsByClassName
  */
 _cn =  (cn) => document.getElementsByClassName(cn);
